@@ -1,32 +1,23 @@
-var currentImageOrderNumber = 1;
-var liElementArray = document.getElementById('imgList').getElementsByTagName('li');
-var liLength = liElementArray.length;
-console.log(liLength);
+var currentImageIndex = 1;
+var imageSlides = document.getElementsByTagName('li');
+var imageCount = imageSlides.length;
 
-renderFirstImage();
+nextImage(0);
 
 document.getElementById("nextButton").addEventListener("click", function(){
-    if (currentImageOrderNumber == liLength) {
-		renderFirstImage();
-		currentImageOrderNumber = 1;
+    if (currentImageIndex == imageCount) {
+		nextImage(0);
+		currentImageIndex = 1;
 	}
 	else {
-		nextImage(currentImageOrderNumber);
-   		currentImageOrderNumber++;	
+		nextImage(currentImageIndex);
+   		currentImageIndex++;	
 	}
 });
 
-function renderFirstImage() {
-	document.getElementById('img1').style.display = 'block';
-	for (var i = 2; i <= liLength; i++) {
-		document.getElementById('img' + i).style.display = 'none';
-	}
-
-}
-
-function nextImage(currentImageOrderNumber) {
-	for (var i = 1; i <= liLength; i++) {
-		if (i == currentImageOrderNumber + 1) {
+function nextImage(currentImageIndex) {
+	for (var i = 1; i <= imageCount; i++) {
+		if (i == currentImageIndex + 1) {
 			document.getElementById('img' + i).style.display = 'block';
 		}
 		else {
