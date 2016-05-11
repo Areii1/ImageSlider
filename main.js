@@ -1,23 +1,22 @@
-var currentImageIndex = 1;
+var currentImageIndex = 0;
 var imageSlides = document.getElementsByTagName('li');
 var imageCount = imageSlides.length;
 
-nextImage(0);
+renderImage(currentImageIndex);
 
-document.getElementById("nextButton").addEventListener("click", function(){
-    if (currentImageIndex == imageCount) {
-		nextImage(0);
-		currentImageIndex = 1;
+document.getElementById('nextButton').addEventListener('click', function() {
+    if (currentImageIndex == imageCount - 1) {
+		currentImageIndex = 0;
 	}
 	else {
-		nextImage(currentImageIndex);
    		currentImageIndex++;	
 	}
+	renderImage(currentImageIndex);
 });
 
-function nextImage(currentImageIndex) {
-	for (var i = 1; i <= imageCount; i++) {
-		if (i == currentImageIndex + 1) {
+function renderImage(currentImageIndex) {
+	for (var i = 0; i < imageCount; i++) {
+		if (i == currentImageIndex) {
 			document.getElementById('img' + i).style.display = 'block';
 		}
 		else {
