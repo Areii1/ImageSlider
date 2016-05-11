@@ -4,12 +4,22 @@ var imageCount = imageSlides.length;
 
 renderImage(currentImageIndex);
 
-document.getElementById('nextButton').addEventListener('click', function() {
+document.getElementById('next-button').addEventListener('click', function() {
     if (currentImageIndex == imageCount - 1) {
 		currentImageIndex = 0;
 	}
 	else {
    		currentImageIndex++;	
+	}
+	renderImage(currentImageIndex);
+});
+
+document.getElementById('previous-button').addEventListener('click', function() {
+    if (currentImageIndex == 0) {
+		currentImageIndex = imageCount - 1;
+	}
+	else {
+   		currentImageIndex--;	
 	}
 	renderImage(currentImageIndex);
 });
@@ -24,3 +34,4 @@ function renderImage(currentImageIndex) {
 		}
 	}
 }
+
