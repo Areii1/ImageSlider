@@ -2,6 +2,11 @@ ol {
 	height: 500px;
 }
 
+li {
+	opacity: 0;
+	display: none;
+}
+
 img {
 	max-height: 500px;
 }

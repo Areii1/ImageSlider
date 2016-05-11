@@ -27,7 +27,7 @@ document.getElementById('previous-button').addEventListener('click', function() 
 function renderImage(currentImageIndex) {
 	for (var i = 0; i < imageCount; i++) {
 		if (i == currentImageIndex) {
-			document.getElementById('img' + i).style.display = 'block';
+			fadeIn(document.getElementById('img' + i));
 		}
 		else {
 			document.getElementById('img' + i).style.display = 'none';
@@ -35,3 +35,17 @@ function renderImage(currentImageIndex) {
 	}
 }
 
+function fadeIn(element) {
+	element.style.opacity = '0';
+	element.style.display = 'block';
+
+	for (var i = 0; i <= 100; i++) {
+		(function(index) {
+			setTimeout(function() {
+				element.style.opacity = index/100;
+			}, index * 5);
+		})(i);
+	}
+}
+
+function fadeOut() {}
