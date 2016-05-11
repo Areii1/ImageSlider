@@ -1,4 +1,4 @@
-var imageAddresses = ['turku.jpg', 'helsinki.jpg', 'kerava.jpg'];
+var imageAddresses = ['images/turku.jpg', 'images/helsinki.jpg', 'images/kerava.jpg'];
 
 var currentImageOrderNumber = 0;
 document.getElementById("nextButton").addEventListener("click", function(){
