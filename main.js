@@ -1,51 +1,79 @@
 var currentImageIndex = 0;
+var nextImageIndex;
 var imageSlides = document.getElementsByTagName('li');
 var imageCount = imageSlides.length;
 
-renderImage(currentImageIndex);
+fadeIn(document.getElementById('img0'));
+
+function isLastImage() {
+	return currentImageIndex == imageCount - 1;
+}
+
+function isFirstImage() {
+	return currentImageIndex == 0;
+}
 
 document.getElementById('next-button').addEventListener('click', function() {
-    if (currentImageIndex == imageCount - 1) {
+    if (isLastImage()) {
+		nextImageIndex = 0;
+	}
+	else {
+   		nextImageIndex = currentImageIndex + 1;
+	}
+	renderImage();
+
+	if (isLastImage()) {
 		currentImageIndex = 0;
 	}
 	else {
-   		currentImageIndex++;	
+		currentImageIndex++;
 	}
-	renderImage(currentImageIndex);
+	
 });
 
 document.getElementById('previous-button').addEventListener('click', function() {
-    if (currentImageIndex == 0) {
+    if (isFirstImage()) {
+		nextImageIndex = imageCount - 1;
+	}
+	else {
+   		nextImageIndex = currentImageIndex - 1;
+	}
+	renderImage();
+
+	if (isFirstImage()) {
 		currentImageIndex = imageCount - 1;
 	}
 	else {
-   		currentImageIndex--;	
+		currentImageIndex--;
 	}
-	renderImage(currentImageIndex);
 });
 
-function renderImage(currentImageIndex) {
-	for (var i = 0; i < imageCount; i++) {
-		if (i == currentImageIndex) {
-			fadeIn(document.getElementById('img' + i));
-		}
-		else {
-			document.getElementById('img' + i).style.display = 'none';
-		}
-	}
+function renderImage() {
+	fadeOut(document.getElementById('img' + currentImageIndex));
+	fadeIn(document.getElementById('img' + nextImageIndex));
+}
+
+function fadeOut(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        op -= op * 0.1;
+    }, 20);
 }
 
 function fadeIn(element) {
-	element.style.opacity = '0';
-	element.style.display = 'block';
-
-	for (var i = 0; i <= 100; i++) {
-		(function(index) {
-			setTimeout(function() {
-				element.style.opacity = index/100;
-			}, index * 5);
-		})(i);
-	}
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        op += op * 0.1;
+    }, 20);
 }
 
-function fadeOut() {}
