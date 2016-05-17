@@ -10,6 +10,7 @@ li {
 
 img {
 	width: 100%;
+	height: 500px;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 button {
@@ -40,6 +42,7 @@ button {
 	color: #fff;
 	padding: 20px 15px;
 	font-size: 40px;
+	cursor: pointer;
 }
 
 #previous-button {

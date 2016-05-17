@@ -43,7 +43,7 @@ function renderImage(nextImage) {
 }
 
 function fadeIn(imageIndex) {
-	var element = document.getElementById('img' + imageIndex);
+	var element = document.getElementsByTagName('li')[imageIndex];
     var opacity = 0.1;
     element.style.display = 'block';
     var timer = setInterval(function () {
@@ -56,7 +56,7 @@ function fadeIn(imageIndex) {
 }
 
 function fadeOut(imageIndex, callback) {
-	var element = document.getElementById('img' + imageIndex);
+	var element = document.getElementsByTagName('li')[imageIndex];
     var opacity = 1;
     var timer = setInterval(function () {
         if (opacity <= 0.1){
