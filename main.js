@@ -1,5 +1,4 @@
 var currentImageIndex = 0;
-var nextImageIndex;
 var imageCount = document.getElementsByTagName('li').length;
 
 fadeIn(currentImageIndex);

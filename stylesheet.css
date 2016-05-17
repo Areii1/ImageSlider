@@ -1,5 +1,6 @@
 ol {
 	height: 500px;
+	padding: 0;
 }
 
 li {
@@ -8,5 +9,37 @@ li {
 }
 
 img {
-	max-height: 500px;
+	width: 100%;
+}
+
+body {
+	background-image: url("images/background.jpg");
+	background-size: cover;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #fff;
+	text-align: center;
+
+}
+
+#carousel {
+	max-width: 700px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+}
+
+button {
+	border: 2px solid #f1c511;
+	background: transparent;
+	color: #fff;
+	padding: 20px 15px;
+	font-size: 40px;
+}
+
+#previous-button {
+	border-right: 0;
+}
+
+#next-button {
+	border-left: 0;
 }
