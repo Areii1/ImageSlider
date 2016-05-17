@@ -53,6 +53,7 @@ function fadeIn(imageIndex) {
         element.style.opacity = opacity;
         opacity += opacity * 0.1;
     }, 20);
+    renderDescription(imageIndex);
 }
 
 function fadeOut(imageIndex, callback) {
@@ -67,4 +68,10 @@ function fadeOut(imageIndex, callback) {
         element.style.opacity = opacity;
         opacity -= opacity * 0.1;
     }, 20);
+}
+
+function renderDescription(nextImage) {
+	var description = document.getElementsByTagName('li')[nextImage].childNodes[1].alt;
+	document.getElementById('image-description').innerHTML = description;
+
 }
