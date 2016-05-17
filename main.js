@@ -1,68 +1,42 @@
 var currentImageIndex = 0;
 var nextImageIndex;
-var imageSlides = document.getElementsByTagName('li');
-var imageCount = imageSlides.length;
+var imageCount = document.getElementsByTagName('li').length;
 
 fadeIn(document.getElementById('img0'));
 
-function isLastImage() {
-	return currentImageIndex == imageCount - 1;
-}
-
-function isFirstImage() {
-	return currentImageIndex == 0;
-}
-
 document.getElementById('next-button').addEventListener('click', function() {
-    if (isLastImage()) {
-		nextImageIndex = 0;
-	}
-	else {
-   		nextImageIndex = currentImageIndex + 1;
-	}
-	renderImage();
-
-	if (isLastImage()) {
+    if (isCurrentImageLast()) {
+		renderImage(currentImageIndex, 0);
 		currentImageIndex = 0;
 	}
 	else {
-		currentImageIndex++;
+   		renderImage(currentImageIndex, currentImageIndex + 1);
+   		currentImageIndex++;
 	}
-	
 });
 
-document.getElementById('previous-button').addEventListener('click', function() {
-    if (isFirstImage()) {
-		nextImageIndex = imageCount - 1;
-	}
-	else {
-   		nextImageIndex = currentImageIndex - 1;
-	}
-	renderImage();
+function isCurrentImageLast() {
+	return currentImageIndex == imageCount - 1;
+}
 
-	if (isFirstImage()) {
+document.getElementById('previous-button').addEventListener('click', function() {
+    if (isCurrentImageFirst()) {
+		renderImage(currentImageIndex, imageCount - 1);
 		currentImageIndex = imageCount - 1;
 	}
 	else {
-		currentImageIndex--;
+   		renderImage(currentImageIndex, currentImageIndex - 1);
+   		currentImageIndex--;
 	}
 });
 
-function renderImage() {
-	fadeOut(document.getElementById('img' + currentImageIndex));
-	fadeIn(document.getElementById('img' + nextImageIndex));
+function isCurrentImageFirst() {
+	return currentImageIndex == 0;
 }
 
-function fadeOut(element) {
-    var op = 1;  // initial opacity
-    var timer = setInterval(function () {
-        if (op <= 0.1){
-            clearInterval(timer);
-            element.style.display = 'none';
-        }
-        element.style.opacity = op;
-        op -= op * 0.1;
-    }, 20);
+function renderImage(current, next) {
+	fadeOut(document.getElementById('img' + current));
+	fadeIn(document.getElementById('img' + next));
 }
 
 function fadeIn(element) {
@@ -77,3 +51,14 @@ function fadeIn(element) {
     }, 20);
 }
 
+function fadeOut(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        op -= op * 0.1;
+    }, 20);
+}
