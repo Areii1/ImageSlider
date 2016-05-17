@@ -75,3 +75,26 @@ function renderDescription(nextImage) {
 	document.getElementById('image-description').innerHTML = description;
 
 }
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 37) {
+        if (isCurrentImageFirst()) {
+            renderImage(imageCount - 1);
+            currentImageIndex = imageCount - 1;
+        }
+        else {
+            renderImage(currentImageIndex - 1);
+            currentImageIndex--;
+        }
+    }
+    else if(event.keyCode == 39) {
+        if (isCurrentImageLast()) {
+            renderImage(0);
+            currentImageIndex = 0;
+        }
+        else {
+            renderImage(currentImageIndex + 1);
+            currentImageIndex++;
+        }
+    }
+});
