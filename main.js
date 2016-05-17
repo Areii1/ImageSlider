@@ -6,11 +6,11 @@ fadeIn(document.getElementById('img0'));
 
 document.getElementById('next-button').addEventListener('click', function() {
     if (isCurrentImageLast()) {
-		renderImage(currentImageIndex, 0);
+		renderImage(0);
 		currentImageIndex = 0;
 	}
 	else {
-   		renderImage(currentImageIndex, currentImageIndex + 1);
+   		renderImage(currentImageIndex + 1);
    		currentImageIndex++;
 	}
 });
@@ -21,11 +21,11 @@ function isCurrentImageLast() {
 
 document.getElementById('previous-button').addEventListener('click', function() {
     if (isCurrentImageFirst()) {
-		renderImage(currentImageIndex, imageCount - 1);
+		renderImage(imageCount - 1);
 		currentImageIndex = imageCount - 1;
 	}
 	else {
-   		renderImage(currentImageIndex, currentImageIndex - 1);
+   		renderImage(currentImageIndex - 1);
    		currentImageIndex--;
 	}
 });
@@ -34,13 +34,13 @@ function isCurrentImageFirst() {
 	return currentImageIndex == 0;
 }
 
-function renderImage(current, next) {
-	fadeOut(document.getElementById('img' + current));
-	fadeIn(document.getElementById('img' + next));
+function renderImage(nextImage) {
+	fadeOut(document.getElementById('img' + currentImageIndex));
+	fadeIn(document.getElementById('img' + nextImage));
 }
 
 function fadeIn(element) {
-    var op = 0.1;  // initial opacity
+    var op = 0.1;
     element.style.display = 'block';
     var timer = setInterval(function () {
         if (op >= 1){
@@ -52,7 +52,7 @@ function fadeIn(element) {
 }
 
 function fadeOut(element) {
-    var op = 1;  // initial opacity
+    var op = 1;
     var timer = setInterval(function () {
         if (op <= 0.1){
             clearInterval(timer);
