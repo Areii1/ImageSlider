@@ -1,18 +1,3 @@
-ol {
-	height: 500px;
-	padding: 0;
-}
-
-li {
-	opacity: 0;
-	display: none;
-}
-
-img {
-	width: 100%;
-	height: 500px;
-}
-
 body {
 	background: 
 	    linear-gradient(
@@ -25,7 +10,21 @@ body {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	color: #fff;
 	text-align: center;
+}
 
+ol {
+	padding: 0;
+}
+
+li {
+	opacity: 0;
+	display: none;
+	height: 500px;
+	overflow: hidden;
+}
+
+img {
+	max-width: 100%;
 }
 
 #carousel {
